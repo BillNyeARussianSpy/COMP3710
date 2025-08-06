@@ -47,7 +47,6 @@ def julia():
         not_diverged = torch.abs(zs_) < 4.0
         ns += not_diverged
         zs = zs_
-    
 
 #plot result via n counter
 import matplotlib.pyplot as plt
