@@ -25,6 +25,7 @@ ns = ns.to(device)
 
 #mandelbrot set
 # Mandelbrot set
+"""
 for i in range(200):
     # compute new values of z: z^2 + x
     zs_ = zs * zs + z
@@ -33,20 +34,21 @@ for i in range(200):
     # update variables to compute
     ns += not_diverged
     zs = zs_
+"""
 
-def julia():
-    """
-    Julia set (example with c = -0.7 + 0.27015j)
-    Reset zs and ns for Julia computation
-    """
-    zs = z.clone()
-    ns = torch.zeros_like(z)
-    c = torch.complex(torch.tensor(-0.7, device=device), torch.tensor(0.27015, device=device))
-    for i in range(200):
-        zs_ = zs * zs + c
-        not_diverged = torch.abs(zs_) < 4.0
-        ns += not_diverged
-        zs = zs_
+# def julia():
+
+zs = z.clone()
+ns = torch.zeros_like(z)
+c = torch.complex(torch.tensor(-0.7, device=device), torch.tensor(0.27015, device=device))
+for i in range(200):
+    zs_ = zs * zs + c
+    not_diverged = torch.abs(zs_) < 4.0
+    ns += not_diverged
+    zs = zs_
+
+
+# zs = julia()
 
 #plot result via n counter
 import matplotlib.pyplot as plt
